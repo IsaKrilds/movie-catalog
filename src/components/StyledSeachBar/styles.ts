@@ -7,36 +7,36 @@ export const Container = styled.div`
 
 export const StyledTextField = styled(TextField)`
   & label:not(.Mui-error) {
-    color: #fff;
+    color: ${({ theme }) => theme.palette.common.white};
   }
   & input {
-    color: #fff;
+    color: ${({ theme }) => theme.palette.common.white};
   }
   & textarea {
-    color: #fff;
+    color: ${({ theme }) => theme.palette.common.white};
   }
   & .MuiInputAdornment-root .MuiIconButton-label {
-    color: #fff;
+    color: ${({ theme }) => theme.palette.common.white};
   }
   & .MuiInputAdornment-root .MuiIconButton-label {
-    color: #fff;
+    color: ${({ theme }) => theme.palette.common.white};
   }
-  & .MuiOutlinedInput-root:not(.Mui-error) {
+  & .MuiInput-root:not(.Mui-error) {
     & fieldset {
-      border-color: #fff;
-      color: #fff;
+      border-color: ${({ theme }) => theme.palette.common.white};
+      color: ${({ theme }) => theme.palette.common.white};
     }
     &:hover fieldset {
-      border-color: #fff;
-      color: #fff;
+      border-color: ${({ theme }) => theme.palette.common.white};
+      color: ${({ theme }) => theme.palette.common.white};
     }
     &.Mui-focused fieldset {
-      border-color: #fff;
-      color: #fff;
+      border-color: ${({ theme }) => theme.palette.common.white};
+      color: ${({ theme }) => theme.palette.common.white};
     }
   }
 
   button {
-    color: #fff !important;
+    color: ${({ theme }) => theme.palette.common.white} !important;
   }
 `;
