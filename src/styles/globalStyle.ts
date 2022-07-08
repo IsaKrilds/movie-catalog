@@ -5,6 +5,7 @@ export default createGlobalStyle`
     height: 100%;
     margin: 0px;
     font-family: 'Work Sans', 'Helvetica';
+    background-color: ${({ theme }) => theme.palette.primary.main};
   }
 
   input:-webkit-autofill,

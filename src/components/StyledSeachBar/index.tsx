@@ -10,11 +10,11 @@ const StyledSearchBar: React.FC = () => {
 
   const navigate = useNavigate();
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<any>) => {
     setSearchValue(e.target.value);
   };
 
-  const handleSearch = (e: any) => {
+  const handleSearch = (e: React.ChangeEvent<any>) => {
     e.preventDefault();
     const query = queryString.stringify({ query: searchValue });
 
@@ -23,7 +23,7 @@ const StyledSearchBar: React.FC = () => {
   };
 
   return (
-    <Stack spacing={1} sx={{ width: 300 }}>
+    <Stack spacing={1} sx={{ width: '300px' }}>
       <form onSubmit={handleSearch}>
         <StyledTextField
           label="Search"

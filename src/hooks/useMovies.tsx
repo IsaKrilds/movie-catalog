@@ -98,6 +98,20 @@ export const useMovies = () => {
     }
   };
 
+  const getMovies = async (genre_id?: number) => {
+    const handleGenreFilter = genre_id ? `&with_genres=${genre_id}` : '';
+
+    try {
+      const response = await axios.get(
+        `/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&page=1${handleGenreFilter}`
+      );
+      return response.data;
+    } catch (err: any) {
+      console.log(err as AxiosError);
+      throw new Error(err) as AxiosError;
+    }
+  };
+
   return {
     getWeekTrending,
     getTodayTrending,
@@ -107,5 +121,6 @@ export const useMovies = () => {
     getAllGenres,
     getRelatedMovies,
     SearchedMovies,
+    getMovies,
   };
 };

@@ -6,6 +6,7 @@ export const Container = styled.div`
 `;
 
 export const StyledTextField = styled(TextField)`
+  width: 100%;
   & label:not(.Mui-error) {
     color: ${({ theme }) => theme.palette.common.white};
   }
@@ -15,26 +16,6 @@ export const StyledTextField = styled(TextField)`
   & textarea {
     color: ${({ theme }) => theme.palette.common.white};
   }
-  /* & .MuiInputAdornment-root .MuiIconButton-label {
-    color: ${({ theme }) => theme.palette.common.white};
-  }
-  & .MuiInputAdornment-root .MuiIconButton-label {
-    color: ${({ theme }) => theme.palette.common.white};
-  }
-  & .MuiInput-root:not(.Mui-error) {
-    & fieldset {
-      border-color: ${({ theme }) => theme.palette.common.white};
-      color: ${({ theme }) => theme.palette.common.white};
-    }
-    &:hover fieldset {
-      border-color: ${({ theme }) => theme.palette.common.white};
-      color: ${({ theme }) => theme.palette.common.white};
-    }
-    &.Mui-focused fieldset {
-      border-color: ${({ theme }) => theme.palette.common.white};
-      color: ${({ theme }) => theme.palette.common.white};
-    }
-  } */
   & label {
     color: #fff;
   }
