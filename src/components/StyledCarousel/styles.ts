@@ -20,4 +20,5 @@ export const Container = styled.div`
 
 export const SectionTitle = styled(Typography)`
   color: ${({ theme }) => theme.palette.common.white};
+  font-weight: bold;
 `;

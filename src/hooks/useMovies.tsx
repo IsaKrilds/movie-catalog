@@ -50,10 +50,36 @@ export const useMovies = () => {
     }
   };
 
+  const getCredits = async (id: number) => {
+    try {
+      const response = await axios.get(
+        `/3/movie/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}`
+      );
+      return response.data;
+    } catch (err: any) {
+      console.log(err as AxiosError);
+      throw new Error(err) as AxiosError;
+    }
+  };
+
+  const getAllGenres = async () => {
+    try {
+      const response = await axios.get(
+        `/3/genre/movie/list?api_key=${process.env.REACT_APP_API_KEY}`
+      );
+      return response.data.genres;
+    } catch (err: any) {
+      console.log(err as AxiosError);
+      throw new Error(err) as AxiosError;
+    }
+  };
+
   return {
     getWeekTrending,
     getTodayTrending,
     getTopRated,
     getUpComing,
+    getCredits,
+    getAllGenres,
   };
 };

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import StyledDialog from '../StyledDialog';
 import { Container } from './styles';
 
 interface Props {
@@ -6,9 +7,20 @@ interface Props {
 }
 
 const CarouselItem: React.FC<Props> = ({ movie }) => {
+  const [open, setOpen] = useState(false);
+
   const imageURL = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
 
-  return <Container $imageLink={imageURL} />;
+  const handleDialog = () => {
+    setOpen(!open);
+  };
+
+  return (
+    <>
+      <Container $imageLink={imageURL} onClick={handleDialog} />
+      <StyledDialog open={open} handleDialog={handleDialog} movieInfo={movie} />
+    </>
+  );
 };
 
 export default CarouselItem;

@@ -10,7 +10,12 @@ declare module 'styled-components' {
 }
 
 const theme = createTheme({
-  palette: {},
+  palette: {
+    primary: {
+      main: '#141414',
+      light: '#686868',
+    },
+  },
   typography: {
     fontFamily: 'Work Sans',
     fontSize: 16,

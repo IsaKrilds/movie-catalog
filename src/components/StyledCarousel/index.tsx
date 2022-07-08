@@ -13,7 +13,6 @@ const StyledCarousel: React.FC<Props> = ({ title, content }) => {
     <Container>
       <SectionTitle variant="h5">{title}</SectionTitle>
       <Carousel
-        emulateTouch
         showArrows={true}
         showIndicators={false}
         showStatus={false}
