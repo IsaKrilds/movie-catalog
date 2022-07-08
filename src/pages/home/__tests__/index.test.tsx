@@ -6,6 +6,6 @@ describe('Render Home page', () => {
   it('should test if Home page is rendered and showing the Text in screen', async () => {
     const { getByTestId } = render(<Home />);
 
-    getByTestId('text');
+    getByTestId('container');
   });
 });

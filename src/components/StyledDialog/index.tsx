@@ -30,7 +30,9 @@ const StyledDialog: React.FC<Props> = ({ open, handleDialog, movieInfo }) => {
   const [filteredGenres, setFilteredGenres] = useState() as any;
   const [loading, setLoading] = useState(true);
 
-  const imageURL = `https://image.tmdb.org/t/p/w500${movieInfo.backdrop_path}`;
+  const imageURL = movieInfo.backdrop_path
+    ? `https://image.tmdb.org/t/p/w500${movieInfo.backdrop_path}`
+    : 'https://cdn.neemo.com.br/uploads/settings_webdelivery/logo/2496/not-found-image-15383864787lu.jpg';
 
   const { getCredits, getAllGenres } = useMovies();
 
@@ -64,15 +66,16 @@ const StyledDialog: React.FC<Props> = ({ open, handleDialog, movieInfo }) => {
     return null;
   }
 
-  if (open) {
-    console.log(credits);
-  }
+  const formatedDate = movieInfo.release_date
+    ? format(new Date(movieInfo.release_date), 'yyyy')
+    : '';
 
   return (
     <Dialog
       open={open}
       onClose={handleDialog}
       scroll="body"
+      maxWidth="sm"
       aria-labelledby="scroll-dialog-title"
       aria-describedby="scroll-dialog-description">
       <StyledTitle>
@@ -88,7 +91,7 @@ const StyledDialog: React.FC<Props> = ({ open, handleDialog, movieInfo }) => {
           <StyledColumn>
             <StyledRow>
               <DialogContentText>
-                <b>{format(new Date(movieInfo.release_date), 'yyyy')}</b>
+                <b>{formatedDate}</b>
               </DialogContentText>
             </StyledRow>
             <StyledRow>

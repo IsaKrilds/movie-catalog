@@ -17,3 +17,14 @@ export const Container = styled.div`
 export const StyledImg = styled.img`
   width: 100px;
 `;
+
+export const OptionsContainer = styled.div``;
+
+export const StyledOptionItem = styled.span`
+  color: ${({ theme }) => theme.palette.common.white};
+  margin-left: ${({ theme }) => theme.spacing(4)}px;
+
+  :hover {
+    cursor: pointer;
+  }
+`;

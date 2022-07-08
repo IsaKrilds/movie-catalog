@@ -5,7 +5,7 @@ import { Container } from './styles';
 
 const Home: React.FC = () => {
   return (
-    <Container>
+    <Container data-testid="container">
       <StyledHeader />
       <StyledMoviesList />
     </Container>

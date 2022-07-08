@@ -74,6 +74,18 @@ export const useMovies = () => {
     }
   };
 
+  const SearchedMovies = async (query: string) => {
+    try {
+      const response = await axios.get(
+        `/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&${query}`
+      );
+      return response.data;
+    } catch (err: any) {
+      console.log(err as AxiosError);
+      throw new Error(err) as AxiosError;
+    }
+  };
+
   return {
     getWeekTrending,
     getTodayTrending,
@@ -81,5 +93,6 @@ export const useMovies = () => {
     getUpComing,
     getCredits,
     getAllGenres,
+    SearchedMovies,
   };
 };

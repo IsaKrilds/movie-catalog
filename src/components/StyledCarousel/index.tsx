@@ -1,7 +1,7 @@
 import React from 'react';
 import { Carousel, Container, SectionTitle } from './styles';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import CarouselItem from '../CarouselItem';
+import BannerItem from '../BannerItem';
 
 interface Props {
   title: string;
@@ -20,7 +20,7 @@ const StyledCarousel: React.FC<Props> = ({ title, content }) => {
         centerMode={true}
         centerSlidePercentage={18}>
         {content.results.map((item: any, index: number) => {
-          return <CarouselItem movie={item} key={index} />;
+          return <BannerItem movie={item} key={index} />;
         })}
       </Carousel>
     </Container>
