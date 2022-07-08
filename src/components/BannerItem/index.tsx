@@ -18,6 +18,7 @@ const BannerItem: React.FC<Props> = ({ movie, style }) => {
     setOpen(!open);
   };
 
+
   return (
     <>
       <Container $imageLink={imageURL} onClick={handleDialog} style={style} />

@@ -86,6 +86,18 @@ export const useMovies = () => {
     }
   };
 
+  const getRelatedMovies = async (id: number) => {
+    try {
+      const response = await axios.get(
+        `/3/movie/${id}/similar?api_key=${process.env.REACT_APP_API_KEY}&page=1`
+      );
+      return response.data;
+    } catch (err: any) {
+      console.log(err as AxiosError);
+      throw new Error(err) as AxiosError;
+    }
+  };
+
   return {
     getWeekTrending,
     getTodayTrending,
@@ -93,6 +105,7 @@ export const useMovies = () => {
     getUpComing,
     getCredits,
     getAllGenres,
+    getRelatedMovies,
     SearchedMovies,
   };
 };

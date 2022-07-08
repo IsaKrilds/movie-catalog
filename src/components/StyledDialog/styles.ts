@@ -61,3 +61,15 @@ export const AboutTitle = styled(DialogContentText)`
   margin: ${({ theme }) => theme.spacing(3)}px 0 ${({ theme }) => theme.spacing(1)}px 0 !important;
   font-size: ${({ theme }) => theme.spacing(3)}px !important;
 `;
+
+export const SimilarMoviesContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  @media (max-width: 630px) {
+    justify-content: center;
+  }
+`;

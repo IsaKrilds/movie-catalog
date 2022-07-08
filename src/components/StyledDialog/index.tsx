@@ -10,9 +10,11 @@ import {
   StyledDialogText,
   StyledColumn,
   StyledTitle,
+  SimilarMoviesContainer,
 } from './styles';
 import { useMovies } from '../../hooks/useMovies';
 import { Close } from '@material-ui/icons';
+import SimilarMoviesItem from '../SimilarMoviesItem';
 
 interface Props {
   open: boolean;
@@ -28,13 +30,14 @@ interface GenreModel {
 const StyledDialog: React.FC<Props> = ({ open, handleDialog, movieInfo }) => {
   const [credits, setCredits] = useState() as any;
   const [filteredGenres, setFilteredGenres] = useState() as any;
+  const [relatedMovies, setRelatedMovies] = useState() as any;
   const [loading, setLoading] = useState(true);
 
   const imageURL = movieInfo.backdrop_path
     ? `https://image.tmdb.org/t/p/w500${movieInfo.backdrop_path}`
     : 'https://cdn.neemo.com.br/uploads/settings_webdelivery/logo/2496/not-found-image-15383864787lu.jpg';
 
-  const { getCredits, getAllGenres } = useMovies();
+  const { getCredits, getAllGenres, getRelatedMovies } = useMovies();
 
   const handleGenres = (allGenres: GenreModel[]) => {
     return allGenres.filter((item: GenreModel) => movieInfo.genre_ids.includes(item.id));
@@ -45,16 +48,19 @@ const StyledDialog: React.FC<Props> = ({ open, handleDialog, movieInfo }) => {
       const handleRequest = async () => {
         try {
           const creditsById = await getCredits(movieInfo.id);
+          const similarMovies = await getRelatedMovies(movieInfo.id);
+
           await getAllGenres().then((item: any) => {
             const filtered = handleGenres(item);
             setFilteredGenres(filtered);
           });
 
           setCredits(creditsById);
-
-          setLoading(false);
+          setRelatedMovies(similarMovies.results);
         } catch (error) {
           console.log(error);
+        } finally {
+          setLoading(false);
         }
       };
 
@@ -136,6 +142,19 @@ const StyledDialog: React.FC<Props> = ({ open, handleDialog, movieInfo }) => {
         </DescriptionContainer>
 
         <DialogContentText tabIndex={-1}>{movieInfo.overview}</DialogContentText>
+
+        {relatedMovies && (
+          <>
+            <AboutTitle>More like this</AboutTitle>
+            <SimilarMoviesContainer>
+              {relatedMovies.map((item: any, index: number) => {
+                if (index < 6) {
+                  return <SimilarMoviesItem movie={item} key={index} />;
+                }
+              })}
+            </SimilarMoviesContainer>
+          </>
+        )}
 
         <AboutTitle>
           About <b>{movieInfo.original_title}</b>
