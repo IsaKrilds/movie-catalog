@@ -4,6 +4,13 @@
 - [Environment variables](#environment-variables)
 
 # Getting Started
+
+- To start the application change the .env.example file name to .env
+- Run `yarn install`
+- Run `yarn start`
+
+Your application should start.
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -32,6 +39,7 @@ Your app is ready to be deployed!
 
 # Environment variables
 
-| Variable     |
-| :----------: |
-| API_URL      |
+| Variable              |
+| :-------------------: |
+| REACT_APP_API_URL     |
+| REACT_APP_API_KEY     |
